@@ -1,21 +1,30 @@
+## Try out the live interactive similarity search app @  ***[share.streamlit.io/georgestein/galaxy_search](https://share.streamlit.io/georgestein/galaxy_search)***
+with code available at [github.com/georgestein/galaxy_search](https://github.com/georgestein/galaxy_search)
+
+
 # ssl-legacysurvey
-This directory contains public data and codes for self-supervised learning on the DESI legacy surveys.
+This directory contains public data from our work on self-supervised learning for the Dark Energy Spectroscopic Instrument (DESI) Legacy Imaging Surveys’ Data Release 9.
 
-## For the live interactive similarity search app please see ***[share.streamlit.io/georgest\
-ein/galaxy_search](https://share.streamlit.io/georgestein/galaxy_search)***, with code available at [github.com/georgestein/galaxy_search](https://github.com/georgestein/galaxy_search)
-
-
-Data can be found here [portal.nersc.gov/project/cusp/ssl_galaxy_surveys/strong_lens_data/
-](https://portal.nersc.gov/project/cusp/ssl_galaxy_surveys/strong_lens_data/)
+We are currently hosting new strong lens candidates found in *Mining for strong gravitational lenses with self-supervised learning* 
 
 
+- data-usage.ipynb demonstrates how to load and visualize the data products 
+
+- The strong lens candidates are summarized in .tsv files in data/
+
+- Full data, including images, can be found in h5py files, which data-usage.ipynb will download for you. Else find the files here [portal.nersc.gov/project/cusp/ssl\_galaxy\_surveys/strong\_lens\_data/
+](https://portal.nersc.gov/project/cusp/ssl_galaxy_surveys/strong_lens_data/).
+
+data-examples.ipynb requires a few libraries. Create a conda environment to install them as follows:
+
+```
 ### Create conda environment for data-examples.ipynb
-'''
+
 conda create --name ssl-legacysurvey python=3.8 matplotlib numpy ipykernel h5py pandas python-wget
 
 conda activate ssl-legacysurvey
 
 python -m ipykernel install --user --name ssl-legacysurvey --display-name ssl-legacysurvey
-'''
+```
 
 
