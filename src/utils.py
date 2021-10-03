@@ -32,5 +32,5 @@ def get_h5py_file(filein, url_path, download=True):
         print(f"h5py data file does not exist. Downloading from:\n {file_url}")
         
         if download:
-            wget.download(url, os.path.join(data_dir, path_h5))
+            wget.download(file_url, os.path.join(data_dir, path_h5))
     
