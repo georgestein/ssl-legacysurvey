@@ -28,9 +28,9 @@ def get_h5py_file(filein, url_path, download=True):
     if local_h5:
         print(f"h5py data file already exists at:\n {path_h5}")
     else:        
-        file_url = os.path.join(url_path, path_h5)
+        file_url = os.path.join(url_path, os.path.basename(path_h5))
         print(f"h5py data file does not exist. Downloading from:\n {file_url}")
         
         if download:
-            wget.download(file_url, os.path.join(data_dir, path_h5))
+            wget.download(file_url, path_h5)
     
