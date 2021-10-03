@@ -1,4 +1,5 @@
 import os
+import wget
 
 def list_files(startpath):
     """Print directory structure and files within
