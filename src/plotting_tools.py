@@ -1,8 +1,14 @@
 import numpy as np
+
 import matplotlib.pyplot as plt
-import math
-import src.to_rgb as to_rgb
 import matplotlib.patches as patches
+
+import src.to_rgb as to_rgb
+
+import math
+import os
+
+
 
 def plot_skymap(ra, dec, carr=None, field_str='', title=None, cmap='viridis', ptsize=20, pt_alpha=0.8, ra_shift=80., dra_lab=20):
     """Scatter plot of (ra, dec, color) in aitoff projection
@@ -53,9 +59,10 @@ def plot_skymap(ra, dec, carr=None, field_str='', title=None, cmap='viridis', pt
     plt.show()
 
 
-def show_galaxies(images, is_previous_lens=None, is_new_lens=None, label_lenses=False,
+def show_galaxies(images, ra, dec, display_radec=True,
+                  title=None, is_previous_lens=None, is_new_lens=None, label_lenses=False,
                   nx=8, npix_show=96, nplt=None, savepath=None,
-                  panel_size=[3,3], lw_rect=3, lw_border=1, colors=['C0', 'red']):
+                  panel_size=[3,3], lw_rect=3, lw_border=1, ls_border='-', fontsize=12, colors=['C0', 'red']):
     """Plot images in an nx by len(images)//nx array
     
     Parameters
@@ -84,7 +91,7 @@ def show_galaxies(images, is_previous_lens=None, is_new_lens=None, label_lenses=
     if nplt is not None:
         ny = math.ceil(nplt/nx)
     nplt = nx*ny
-    
+
     # instead of subplots plot as one large image - this is much faster
     image_full = np.ones((ny*npix_show, nx*npix_show, 3), dtype=np.float32)
 
@@ -114,27 +121,31 @@ def show_galaxies(images, is_previous_lens=None, is_new_lens=None, label_lenses=
     ax.imshow(image_full, interpolation='none')
     ax.axis('off')
 
-
-    if label_lenses:
+    if label_lenses or display_radec:
         # color previous lenses
         fi = 0
         for i in range(ny):
             for j in range(nx):
-                is_lens = is_previous_lens[fi] | is_new_lens[fi]
+                if label_lenses:
+                    is_lens = is_previous_lens[fi] | is_new_lens[fi]
 
-                if is_lens:
-                    ilp = is_previous_lens[fi]
-                    if ilp:
-                        ci = colors[0]
-                    else:
-                        ci = colors[1]
+                    if is_lens:
+                        ilp = is_previous_lens[fi]
+                        if ilp:
+                            ci = colors[0]
+                        else:
+                            ci = colors[1]
 
-                if is_lens:
-                    ls = '-'
-                    rect = patches.Rectangle((lw_border+j*npix_show,  lw_border+i*npix_show), npix_show-lw_border*2-1, npix_show-lw_border*2-1, 
-                                             linewidth=lw_rect, ls=ls, edgecolor=ci, facecolor='none')#, alpha=0.2)#, 'none')
-                    ax.add_patch(rect)
 
+                        rect = patches.Rectangle((lw_border+j*npix_show,  lw_border+i*npix_show),
+                                                 npix_show-lw_border*2-1, npix_show-lw_border*2-1, 
+                                                 linewidth=lw_rect, ls=ls_border, edgecolor=ci, facecolor='none')#, alpha=0.2)#, 'none')
+                        ax.add_patch(rect)
+
+                if display_radec:
+                    txt = '{:.4f} {:.4f}'.format(ra[fi], dec[fi])
+                    ax.text(5+j*npix_show, (i-1)*npix_show + npix_show+5, txt, color='w', ha='left', va='top', fontsize=fontsize)
+                
                 fi+=1
 
                 if fi >= nimg:
@@ -142,6 +153,7 @@ def show_galaxies(images, is_previous_lens=None, is_new_lens=None, label_lenses=
             if fi >= nimg:
                 break
 
+    if label_lenses:
         lw_leg = 2
 
         if ny > 1:
@@ -149,3 +161,23 @@ def show_galaxies(images, is_previous_lens=None, is_new_lens=None, label_lenses=
             ax.plot(0, 0, lw=lw_leg, color=colors[1], label="New Lens")
      
             ax.legend(ncol=2, bbox_to_anchor=(0.5, 1.01), loc='center', frameon=False)
+
+    if title is not None:
+        ax.set_title(title)
+
+
+def list_files(startpath):
+    """Print directory structure and files within
+
+    Taken from https://stackoverflow.com/questions/9727673/list-directory-tree-structure-in-python
+    """
+    print(f'{startpath} structure and files:')
+
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        print('{}{}/'.format(indent, os.path.basename(root)))
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            print('{}{}'.format(subindent, f))
+ 

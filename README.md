@@ -11,7 +11,7 @@ Data can be found here [portal.nersc.gov/project/cusp/ssl_galaxy_surveys/strong_
 
 ### Create conda environment for data-examples.ipynb
 '''
-conda create --name ssl-legacysurvey python=3.8 matplotlib numpy ipykernel h5py pandas
+conda create --name ssl-legacysurvey python=3.8 matplotlib numpy ipykernel h5py pandas python-wget
 
 conda activate ssl-legacysurvey
 
