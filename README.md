@@ -11,10 +11,7 @@ We are currently hosting new strong lens candidates found in *Mining for strong 
 - data-usage.ipynb demonstrates how to load and visualize the data products, which include:
 	- data/training_lenses.tsv - lenses used for training. 
 	- data/new_lenses.tsv - our list of new lens candidates. 
-	- data/network_predictions/ - our top 100,000 network predictions for each survey region, using both the linear classification and fine-tuned models
-
-
-- The strong lens candidates are summarized in .tsv files in data/
+	- data/network_predictions/ - our top 100,000 network predictions for each survey region, using both the linear classification and fine-tuned models.
 
 - Full data, including images, can be found in h5py files, which data-usage.ipynb will download for you. Else find the files here [portal.nersc.gov/project/cusp/ssl\_galaxy\_surveys/strong\_lens\_data/
 ](https://portal.nersc.gov/project/cusp/ssl_galaxy_surveys/strong_lens_data/).
