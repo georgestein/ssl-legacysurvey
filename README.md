@@ -5,7 +5,7 @@ with code available at [github.com/georgestein/galaxy_search](https://github.com
 # ssl-legacysurvey
 This directory contains public data from our work on self-supervised learning for the Dark Energy Spectroscopic Instrument (DESI) Legacy Imaging Surveys’ Data Release 9.
 
-We are currently hosting new strong lens candidates found in *Mining for strong gravitational lenses with self-supervised learning* 
+We are currently hosting new strong lens candidates found in *Mining for strong gravitational lenses with self-supervised learning - [arxiv.org/abs/2110.00023](https://arxiv.org/abs/2110.00023)* 
 
 
 - data-usage.ipynb demonstrates how to load and visualize the data products, which include:
