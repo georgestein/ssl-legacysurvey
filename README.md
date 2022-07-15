@@ -1,11 +1,5 @@
 ## ssl-legacysurvey
 
-.. image:: https://img.shields.io/badge/arXiv-2110.00023-blue.svg
-        :target: https://arxiv.org/abs/2110.00023
-
-.. image:: https://img.shields.io/badge/arXiv-2110.13151-blue.svg
-        :target: https://arxiv.org/abs/2110.13151
-
 ssl-legacysurvey allows for self-supervised learning (SSL), classification, regression, similarity search, and dimensionality reduction/anomaly detection tasks on large image datasets.
 
 Focusing on 76 million galaxy images that I pulled from the [Dark Energy Spectroscopic Instrument (DESI) Legacy Survey](https://www.legacysurvey.org/) Data Release 9, this project works to release trained models, tools, and datasets. The codebase is more broadly applicable to any image dataset (just modify the dataloader and augmentations!).
