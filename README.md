@@ -1,5 +1,7 @@
 ## ssl-legacysurvey
 
+![alt text](figures/ssl_umap.png)
+
 ssl-legacysurvey allows for self-supervised learning (SSL), classification, regression, similarity search, and dimensionality reduction/anomaly detection tasks on large image datasets.
 
 Focusing on 76 million galaxy images that I pulled from the [Dark Energy Spectroscopic Instrument (DESI) Legacy Survey](https://www.legacysurvey.org/) Data Release 9, this project works to release trained models, tools, and datasets. The codebase is more broadly applicable to any image dataset (just modify the dataloader and augmentations!).
