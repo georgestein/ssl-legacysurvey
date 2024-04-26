@@ -61,9 +61,9 @@ Activate conda environment, `conda activate ssl-legacysurvey`, and install ssl-l
 
 ## Data Access
 
-The data set is large (20 TB), so I have set up a Globus endpoint to easily copy files to your local machine. I have also included a small toy datasample at `data/tiny_dataset.h5`. The Globus endpoint is:
+The data set is large (20 TB), so we have set up a Globus endpoint to easily copy files to your local machine. We have also included a small toy datasample in this repo at `data/tiny_dataset.h5`. The Globus endpoint is (NEW AS OF April 26 2024):
 
-<https://app.globus.org/file-manager?origin_id=9fb0fc0e-e760-11ec-9bd2-2d2219dcc1fa&origin_path=%2F>
+[https://app.globus.org/file-manager?origin_id=9fb0fc0e-e760-11ec-9bd2-2d2219dcc1fa&origin_path=%2F](https://app.globus.org/file-manager?origin_id=59c818dc-8542-46d8-80d9-ab144669c7b6&origin_path=%2Fssl-legacysurvey%2F)
 
 The directory is organized as follows, where image/catalogue information for each survey is split into chunks of 1,000,000 galaxies (sorted by decreasing z-band flux) and saved in hdf5 format:
 
